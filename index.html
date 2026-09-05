@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Staff Sign-in — Smart Student Access</title>
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="center-page">
+
+    <div class="box">
+
+        <!-- DEVICE STATUS -->
+        <div class="device-tag">
+            <span class="dot"></span>
+            GATE-01 · MAIN ENTRANCE
+        </div>
+
+
+        <!-- BRAND -->
+        <div style="
+            display:flex;
+            align-items:center;
+            gap:12px;
+            margin-bottom:24px;
+        ">
+
+            <div style="
+                width:48px;
+                height:48px;
+                display:grid;
+                place-items:center;
+                border-radius:14px;
+                background:rgba(240,184,75,.12);
+                border:1px solid rgba(240,184,75,.2);
+                color:#f0b84b;
+                font-size:22px;
+            ">
+                RFID
+            </div>
+
+            <div>
+
+                <div style="
+                    font-size:13px;
+                    font-weight:800;
+                    letter-spacing:.04em;
+                ">
+                    SMART STUDENT ID
+                </div>
+
+                <div style="
+                    color:#8797aa;
+                    font-size:9px;
+                    margin-top:2px;
+                    text-transform:uppercase;
+                    letter-spacing:.1em;
+                ">
+                    Access Control System
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TITLE -->
+        <h1>Staff sign-in</h1>
+
+        <p class="sub">
+            Authorized personnel only
+            <br>
+            Sign in to access the student verification terminal.
+        </p>
+
+
+        <!-- STAFF ID -->
+        <div class="field">
+
+            <label for="staffId">
+                STAFF ID
+            </label>
+
+            <input
+                type="text"
+                id="staffId"
+                placeholder="e.g. STF-0231"
+                autocomplete="username"
+            >
+
+        </div>
+
+
+        <!-- PIN -->
+        <div class="field">
+
+            <label for="staffPin">
+                SECURITY PIN
+            </label>
+
+            <input
+                type="password"
+                id="staffPin"
+                placeholder="Enter your PIN"
+                autocomplete="current-password"
+            >
+
+        </div>
+
+
+        <!-- ERROR -->
+        <p
+            class="login-error"
+            id="loginError">
+        </p>
+
+
+        <!-- SIGN IN -->
+        <button
+            class="btn-primary"
+            onclick="authenticate()">
+
+            Sign in to terminal
+
+        </button>
+
+
+        <!-- SECURITY MESSAGE -->
+        <div class="note">
+
+            <strong style="color:#c8d3df;">
+                Security notice
+            </strong>
+
+            <br>
+
+            This terminal records staff sign-in and
+            student verification activity for audit purposes.
+
+        </div>
+
+
+        <!-- DEMO AREA -->
+        <div class="demo-hint">
+            Development / demonstration accounts
+        </div>
+
+
+        <div style="
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:9px;
+            margin-top:10px;
+        ">
+
+            <button
+                class="test-tap-btn"
+                onclick="fillDemo('STF-0231')">
+
+                <span>STF-0231</span>
+
+                <span style="
+                    display:block;
+                    color:#8797aa;
+                    font-size:8px;
+                    margin-top:3px;
+                ">
+                    Security
+                </span>
+
+            </button>
+
+
+            <button
+                class="test-tap-btn"
+                onclick="fillDemo('STF-0099')">
+
+                <span>STF-0099</span>
+
+                <span style="
+                    display:block;
+                    color:#8797aa;
+                    font-size:8px;
+                    margin-top:3px;
+                ">
+                    Security + Admin
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- FOOTER -->
+        <div style="
+            margin-top:26px;
+            padding-top:16px;
+            border-top:1px solid rgba(255,255,255,.06);
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        ">
+
+            <span style="
+                color:#5e6e82;
+                font-size:8px;
+                font-family:'JetBrains Mono',monospace;
+            ">
+                SYSTEM ONLINE
+            </span>
+
+            <span style="
+                color:#5e6e82;
+                font-size:8px;
+                font-family:'JetBrains Mono',monospace;
+            ">
+                v1.0
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="toast" id="toast">
+    <span id="toastText"></span>
+</div>
+
+
+<script src="data.js"></script>
+
+<script>
+
+function fillDemo(id) {
+
+    document.getElementById('staffId').value = id;
+
+    document.getElementById('staffPin').value = '1234';
+
+    document
+        .getElementById('loginError')
+        .classList.remove('show');
+
+}
+
+
+function authenticate() {
+
+    const errorEl =
+        document.getElementById('loginError');
+
+    const idInput =
+        document
+            .getElementById('staffId')
+            .value
+            .trim()
+            .toUpperCase();
+
+    const pinInput =
+        document
+            .getElementById('staffPin')
+            .value
+            .trim();
+
+
+    /* EMPTY FIELDS */
+
+    if (!idInput || !pinInput) {
+
+        errorEl.textContent =
+            'Please enter your Staff ID and security PIN.';
+
+        errorEl.classList.add('show');
+
+        return;
+    }
+
+
+    /* STAFF LOOKUP */
+
+    const staff =
+        STAFF_DB[idInput];
+
+
+    if (!staff) {
+
+        errorEl.textContent =
+            'Staff ID not recognized.';
+
+        errorEl.classList.add('show');
+
+        return;
+    }
+
+
+    /* PIN CHECK */
+
+    if (pinInput !== staff.pin) {
+
+        errorEl.textContent =
+            'Incorrect PIN. Access denied.';
+
+        errorEl.classList.add('show');
+
+        return;
+    }
+
+
+    /* SUCCESS */
+
+    errorEl.classList.remove('show');
+
+
+    window.location.href =
+        'level-select.html?staff=' +
+        encodeURIComponent(idInput);
+
+}
+
+
+document
+    .getElementById('staffPin')
+    .addEventListener('keydown', function(event) {
+
+        if (event.key === 'Enter') {
+
+            authenticate();
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Choose Access Level | Smart Student ID</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="level-page">
+
+    <div class="level-shell">
+
+        <!-- TOP BRAND -->
+        <div class="level-brand">
+
+            <div class="brand-mark">
+                <svg viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.8">
+                    <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+            </div>
+
+            <div>
+                <div class="brand-name">
+                    SMART STUDENT ID
+                </div>
+
+                <div class="brand-subtitle">
+                    ACCESS CONTROL SYSTEM
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- USER INFORMATION -->
+        <div class="level-header">
+
+            <div>
+
+                <div class="eyebrow">
+                    AUTHENTICATED STAFF
+                </div>
+
+                <h1 class="level-title">
+                    Choose access level
+                </h1>
+
+                <p class="level-description">
+                    Select the system interface assigned to your account.
+                </p>
+
+            </div>
+
+
+            <div class="user-chip">
+
+                <div class="avatar" id="authAvatar">
+                    --
+                </div>
+
+                <div>
+
+                    <div class="user-name" id="authName">
+                        —
+                    </div>
+
+                    <div class="user-id" id="authId">
+                        —
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACCESS LEVEL CARDS -->
+        <div id="levelCardsContainer" class="level-grid">
+        </div>
+
+
+        <!-- SECURITY NOTICE -->
+        <div class="security-notice">
+
+            <div class="security-notice-icon">
+
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.8">
+
+                    <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/>
+
+                    <path d="M12 8v4"/>
+                    <circle cx="12" cy="16" r=".7" fill="currentColor"/>
+
+                </svg>
+
+            </div>
+
+            <div>
+
+                <div class="security-notice-title">
+                    Authorized access only
+                </div>
+
+                <div class="security-notice-text">
+                    Your available interfaces are determined by your staff account permissions.
+                    All verification activities are recorded for audit purposes.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SIGN OUT -->
+        <div class="level-footer">
+
+            <a href="index.html" class="signout-link">
+
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.8">
+
+                    <path d="M10 17l5-5-5-5"/>
+                    <path d="M15 12H3"/>
+                    <path d="M21 3v18"/>
+                    
+                </svg>
+
+                Sign out
+
+            </a>
+
+            <span class="footer-system">
+                SMART-ID · GATE-01
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="data.js"></script>
+
+<script>
+
+const staff = requireStaff();
+
+if (!staff) {
+
+    window.location.href = "index.html";
+
+} else {
+
+    /*
+     * DISPLAY STAFF INFORMATION
+     */
+
+    document.getElementById("authAvatar").textContent =
+        staff.initials || "--";
+
+    document.getElementById("authName").textContent =
+        staff.name || "Staff Member";
+
+    document.getElementById("authId").textContent =
+        staff.id || "—";
+
+
+    /*
+     * BUILD ACCESS LEVEL CARDS
+     */
+
+    const container =
+        document.getElementById("levelCardsContainer");
+
+    container.innerHTML = "";
+
+
+    staff.levels.forEach(levelKey => {
+
+        const info = LEVEL_INFO[levelKey];
+
+        if (!info) {
+            return;
+        }
+
+
+        const link =
+            document.createElement("a");
+
+        link.className = "level-card";
+
+        link.href =
+            info.page +
+            "?staff=" +
+            encodeURIComponent(staff.id);
+
+
+        link.innerHTML = `
+
+            <div class="level-card-top">
+
+                <div
+                    class="level-icon"
+                    style="background:${info.bg}; color:${info.color};"
+                >
+                    ${info.icon}
+                </div>
+
+                <div class="level-arrow">
+
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2">
+
+                        <path d="M5 12h13"/>
+                        <path d="M13 6l6 6-6 6"/>
+
+                    </svg>
+
+                </div>
+
+            </div>
+
+
+            <div class="level-card-title">
+                ${info.label}
+            </div>
+
+
+            <div class="level-card-description">
+                ${info.desc}
+            </div>
+
+
+            <div class="level-card-access">
+
+                <span class="access-dot"></span>
+
+                ACCESS AUTHORIZED
+
+            </div>
+
+        `;
+
+        container.appendChild(link);
+
+    });
+
+
+    /*
+     * SINGLE ACCESS LEVEL MESSAGE
+     */
+
+    if (staff.levels.length === 1) {
+
+        const note =
+            document.createElement("div");
+
+        note.className =
+            "not-assigned-note";
+
+        note.innerHTML = `
+
+            <strong>Single access level assigned</strong>
+
+            <span>
+                Your account currently has one authorized
+                interface. Contact the administrator if
+                additional permissions are required.
+            </span>
+
+        `;
+
+        container.appendChild(note);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
