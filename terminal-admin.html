@@ -3,21 +3,21 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<title>Admin Console — Smart Student Access</title>
+    <title>Admin Console — Smart Student Access</title>
 
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+          rel="stylesheet">
 
-<link rel="stylesheet"
-      href="styles.css">
+    <link rel="stylesheet"
+          href="styles.css">
 
 </head>
 
@@ -25,90 +25,25 @@
 <body>
 
 
+<!-- =====================================================
+     APPLICATION
+===================================================== -->
+
 <div class="app-layout">
 
 
-<!-- =====================================================
-     SIDEBAR
-===================================================== -->
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
 
-<aside class="sidebar">
-
-    <div class="sidebar-brand">
-
-        <div class="sidebar-brand-icon">
-
-            <svg viewBox="0 0 24 24"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="2">
-
-                <rect x="3"
-                      y="4"
-                      width="18"
-                      height="16"
-                      rx="2"/>
-
-                <path d="M8 8h8"/>
-                <path d="M8 12h5"/>
-                <path d="M8 16h3"/>
-
-            </svg>
-
-        </div>
-
-        <div>
-
-            <div class="sidebar-brand-title">
-                SMART STUDENT ID
-            </div>
-
-            <div class="sidebar-brand-subtitle">
-                Access Control
-            </div>
-
-        </div>
-
-    </div>
+    <aside class="sidebar">
 
 
-    <div class="sidebar-section">
+        <!-- BRAND -->
 
-        <div class="sidebar-section-title">
-            Administration
-        </div>
+        <div class="sidebar-brand">
 
-        <nav class="sidebar-nav">
-
-            <a href="#dashboard"
-               class="sidebar-link active">
-
-                <svg viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2">
-
-                    <rect x="3" y="3"
-                          width="7" height="7"/>
-
-                    <rect x="14" y="3"
-                          width="7" height="7"/>
-
-                    <rect x="3" y="14"
-                          width="7" height="7"/>
-
-                    <rect x="14" y="14"
-                          width="7" height="7"/>
-
-                </svg>
-
-                Dashboard
-
-            </a>
-
-
-            <a href="#card-management"
-               class="sidebar-link">
+            <div class="sidebar-brand-icon">
 
                 <svg viewBox="0 0 24 24"
                      fill="none"
@@ -116,802 +51,1098 @@
                      stroke-width="2">
 
                     <rect x="3"
-                          y="5"
+                          y="4"
                           width="18"
-                          height="14"
+                          height="16"
                           rx="2"/>
 
-                    <path d="M3 10h18"/>
+                    <path d="M8 8h8"/>
+                    <path d="M8 12h5"/>
+                    <path d="M8 16h3"/>
 
                 </svg>
 
-                Card Management
-
-            </a>
-
-
-            <a href="#access-points"
-               class="sidebar-link">
-
-                <svg viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2">
-
-                    <path d="M12 21s7-4.4 7-10V5l-7-3-7 3v6c0 5.6 7 10 7 10z"/>
-
-                </svg>
-
-                Access Points
-
-            </a>
-
-
-            <a href="#activity"
-               class="sidebar-link">
-
-                <svg viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2">
-
-                    <path d="M4 6h16"/>
-                    <path d="M4 12h16"/>
-                    <path d="M4 18h16"/>
-
-                </svg>
-
-                Activity Logs
-
-            </a>
-
-        </nav>
-
-    </div>
-
-
-    <div class="sidebar-section">
-
-        <div class="sidebar-section-title">
-            System
-        </div>
-
-        <nav class="sidebar-nav">
-
-            <a href="terminal-security.html"
-               class="sidebar-link">
-
-                <svg viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2">
-
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-
-                </svg>
-
-                Security Terminal
-
-            </a>
-
-        </nav>
-
-    </div>
-
-
-    <div class="sidebar-bottom">
-
-        <div class="sidebar-user">
-
-            <div class="avatar"
-                 id="adminAvatar">
-
-                --
-
             </div>
 
-            <div class="sidebar-user-info">
-
-                <div class="sidebar-user-name"
-                     id="adminName">
-
-                    —
-
-                </div>
-
-                <div class="sidebar-user-role">
-
-                    Access Control Admin
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</aside>
-
-
-
-<!-- =====================================================
-     MAIN CONTENT
-===================================================== -->
-
-<main class="main-content">
-
-
-<!-- TOPBAR -->
-
-<header class="topbar">
-
-    <div>
-
-        <div class="topbar-title">
-            Administration Console
-        </div>
-
-        <div class="topbar-subtitle">
-            Smart Student Identity & Access Control System
-        </div>
-
-    </div>
-
-
-    <div class="topbar-right">
-
-        <span class="status-pill status-online"
-              id="databaseStatus">
-
-            <span class="status-dot"></span>
-
-            Database checking...
-
-        </span>
-
-
-        <a href="index.html"
-           class="btn btn-secondary">
-
-            Sign out
-
-        </a>
-
-    </div>
-
-</header>
-
-
-
-<div class="admin-page">
-
-<div class="admin-container">
-
-
-
-<!-- =====================================================
-     PAGE HEADING
-===================================================== -->
-
-<div class="page-heading"
-     id="dashboard">
-
-    <h1>
-        Access Control Dashboard
-    </h1>
-
-    <p>
-        Monitor student identity cards, RFID status and access infrastructure.
-    </p>
-
-</div>
-
-
-
-<!-- =====================================================
-     STATISTICS
-===================================================== -->
-
-<div class="stats-grid">
-
-
-    <div class="stat-card">
-
-        <div class="stat-label">
-            Total Students
-        </div>
-
-        <div class="stat-value"
-             id="totalStudents">
-
-            —
-
-        </div>
-
-        <div class="stat-note">
-            Registered in system
-        </div>
-
-    </div>
-
-
-
-    <div class="stat-card">
-
-        <div class="stat-label">
-            RFID Cards
-        </div>
-
-        <div class="stat-value"
-             id="totalCards">
-
-            —
-
-        </div>
-
-        <div class="stat-note">
-            Cards issued
-        </div>
-
-    </div>
-
-
-
-    <div class="stat-card">
-
-        <div class="stat-label">
-            Active Cards
-        </div>
-
-        <div class="stat-value"
-             id="activeCards">
-
-            —
-
-        </div>
-
-        <div class="stat-note">
-            Currently valid for gate access
-        </div>
-
-    </div>
-
-
-
-    <div class="stat-card">
-
-        <div class="stat-label">
-            Inactive Cards
-        </div>
-
-        <div class="stat-value"
-             id="inactiveCards">
-
-            —
-
-        </div>
-
-        <div class="stat-note">
-            Access disabled
-        </div>
-
-    </div>
-
-
-</div>
-
-
-
-<!-- =====================================================
-     CARD MANAGEMENT
-===================================================== -->
-
-<div class="lookup-panel"
-     id="card-management">
-
-
-    <div class="lookup-title">
-        RFID Card Lookup & Management
-    </div>
-
-
-    <p style="
-        color:var(--muted);
-        font-size:10px;
-        margin-bottom:14px;
-    ">
-
-        Search using RFID UID, Student ID or Registration Number.
-
-    </p>
-
-
-    <div class="lookup-row">
-
-        <input
-            class="form-input"
-            id="lookupInput"
-            type="text"
-            placeholder="e.g. A1B2C3D4 or 2022-04-12345">
-
-
-        <button
-            class="btn btn-primary"
-            onclick="lookupCard()">
-
-            Search Card
-
-        </button>
-
-    </div>
-
-
-    <!-- RESULT -->
-
-    <div id="lookupResult"
-         style="display:none;margin-top:20px;">
-
-        <div style="
-            display:flex;
-            align-items:center;
-            gap:15px;
-            padding:18px;
-            background:var(--surface-2);
-            border:1px solid var(--border);
-            border-radius:var(--radius-md);
-        ">
-
-
-            <div class="student-avatar"
-                 id="lookupAvatar">
-
-                --
-
-            </div>
-
-
-            <div style="flex:1;">
-
-                <div class="student-name"
-                     id="lookupName">
-
-                    —
-
-                </div>
-
-                <div class="student-program"
-                     id="lookupProgramme">
-
-                    —
-
-                </div>
-
-                <div class="student-year"
-                     id="lookupYear">
-
-                    —
-
-                </div>
-
-            </div>
-
-
-            <div
-                id="lookupStatus"
-                class="card-status active">
-
-                <span class="card-status-dot"></span>
-
-                ACTIVE
-
-            </div>
-
-        </div>
-
-
-        <div class="student-info-grid"
-             style="margin-top:14px;">
-
-
-            <div class="info-item">
-
-                <div class="info-label">
-                    Student ID
-                </div>
-
-                <div class="info-value"
-                     id="lookupStudentId">
-
-                    —
-
-                </div>
-
-            </div>
-
-
-            <div class="info-item">
-
-                <div class="info-label">
-                    Registration Number
-                </div>
-
-                <div class="info-value mono"
-                     id="lookupRegNo">
-
-                    —
-
-                </div>
-
-            </div>
-
-
-            <div class="info-item">
-
-                <div class="info-label">
-                    RFID UID
-                </div>
-
-                <div class="info-value mono"
-                     id="lookupUid">
-
-                    —
-
-                </div>
-
-            </div>
-
-
-            <div class="info-item">
-
-                <div class="info-label">
-                    Card ID
-                </div>
-
-                <div class="info-value"
-                     id="lookupCardId">
-
-                    —
-
-                </div>
-
-            </div>
-
-
-            <div class="info-item">
-
-                <div class="info-label">
-                    Enrollment Status
-                </div>
-
-                <div class="info-value"
-                     id="lookupEnrollment">
-
-                    —
-
-                </div>
-
-            </div>
-
-
-            <div class="info-item">
-
-                <div class="info-label">
-                    Issue Date
-                </div>
-
-                <div class="info-value"
-                     id="lookupIssueDate">
-
-                    —
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-        <!-- STATUS ACTIONS -->
-
-        <div style="
-            display:flex;
-            gap:10px;
-            margin-top:14px;
-        ">
-
-            <button
-                class="btn btn-success"
-                onclick="changeCardStatus('ACTIVE')">
-
-                ✓ Activate Card
-
-            </button>
-
-
-            <button
-                class="btn btn-danger"
-                onclick="changeCardStatus('INACTIVE')">
-
-                × Deactivate Card
-
-            </button>
-
-        </div>
-
-
-    </div>
-
-
-    <!-- EMPTY STATE -->
-
-    <div id="lookupEmpty"
-         class="empty-state">
-
-        <div class="empty-icon">
-
-            <svg viewBox="0 0 24 24"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="2">
-
-                <rect x="3"
-                      y="5"
-                      width="18"
-                      height="14"
-                      rx="2"/>
-
-                <path d="M3 10h18"/>
-
-            </svg>
-
-        </div>
-
-        <div class="empty-title">
-            No card selected
-        </div>
-
-        <div class="empty-text">
-            Search for a student or RFID card to view its information.
-        </div>
-
-    </div>
-
-
-</div>
-
-
-
-<!-- =====================================================
-     ACCESS POINTS
-===================================================== -->
-
-<div id="access-points">
-
-    <div class="page-heading"
-         style="margin-top:28px;margin-bottom:14px;">
-
-        <h1 style="font-size:18px;">
-            Access Points
-        </h1>
-
-        <p>
-            Current RFID-enabled access locations.
-        </p>
-
-    </div>
-
-
-    <div class="access-points-grid">
-
-
-        <div class="access-point-card">
-
-            <div class="access-point-top">
-
-                <div>
-
-                    <div class="access-point-name">
-                        Main Gate
-                    </div>
-
-                    <div class="access-point-code">
-                        GATE-01
-                    </div>
-
-                </div>
-
-                <span class="status-pill status-online">
-
-                    <span class="status-dot"></span>
-
-                    ONLINE
-
-                </span>
-
-            </div>
-
-            <div style="
-                color:var(--muted);
-                font-size:10px;
-                margin-top:14px;
-            ">
-
-                Policy:
-                <strong style="color:var(--text-soft);">
-                    GATE-BASIC
-                </strong>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="access-point-card">
-
-            <div class="access-point-top">
-
-                <div>
-
-                    <div class="access-point-name">
-                        Library Entrance
-                    </div>
-
-                    <div class="access-point-code">
-                        READER-04
-                    </div>
-
-                </div>
-
-                <span class="status-pill status-online">
-
-                    <span class="status-dot"></span>
-
-                    ONLINE
-
-                </span>
-
-            </div>
-
-            <div style="
-                color:var(--muted);
-                font-size:10px;
-                margin-top:14px;
-            ">
-
-                Policy:
-                <strong style="color:var(--text-soft);">
-                    GATE-BASIC
-                </strong>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="access-point-card">
-
-            <div class="access-point-top">
-
-                <div>
-
-                    <div class="access-point-name">
-                        Exam Room 204
-                    </div>
-
-                    <div class="access-point-code">
-                        READER-11
-                    </div>
-
-                </div>
-
-                <span class="status-pill status-offline">
-
-                    <span class="status-dot"></span>
-
-                    OFFLINE
-
-                </span>
-
-            </div>
-
-            <div style="
-                color:var(--muted);
-                font-size:10px;
-                margin-top:14px;
-            ">
-
-                Policy:
-                <strong style="color:var(--text-soft);">
-                    EXAM-ROOM
-                </strong>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     ACTIVITY
-===================================================== -->
-
-<div id="activity"
-     class="activity-panel"
-     style="margin-top:20px;">
-
-    <div class="activity-header">
-        System Information
-    </div>
-
-    <div class="activity-list">
-
-        <div class="activity-row">
-
-            <div class="activity-time">
-                SYSTEM
-            </div>
 
             <div>
 
-                <div class="activity-name">
-                    Centralized database
+                <div class="sidebar-brand-title">
+                    SMART STUDENT ID
                 </div>
 
-                <div class="activity-location">
-                    MySQL · smart_student_access
+                <div class="sidebar-brand-subtitle">
+                    Access Control
                 </div>
 
-            </div>
-
-            <div class="feed-result-granted">
-                CONNECTED
             </div>
 
         </div>
 
 
-        <div class="activity-row">
 
-            <div class="activity-time">
-                RFID
+        <!-- ADMINISTRATION -->
+
+        <div class="sidebar-section">
+
+            <div class="sidebar-section-title">
+                Administration
             </div>
+
+
+            <nav class="sidebar-nav">
+
+
+                <a href="#dashboard"
+                   class="sidebar-link active">
+
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2">
+
+                        <rect x="3"
+                              y="3"
+                              width="7"
+                              height="7"/>
+
+                        <rect x="14"
+                              y="3"
+                              width="7"
+                              height="7"/>
+
+                        <rect x="3"
+                              y="14"
+                              width="7"
+                              height="7"/>
+
+                        <rect x="14"
+                              y="14"
+                              width="7"
+                              height="7"/>
+
+                    </svg>
+
+                    Dashboard
+
+                </a>
+
+
+
+                <a href="#card-management"
+                   class="sidebar-link">
+
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2">
+
+                        <rect x="3"
+                              y="5"
+                              width="18"
+                              height="14"
+                              rx="2"/>
+
+                        <path d="M3 10h18"/>
+
+                    </svg>
+
+                    Card Management
+
+                </a>
+
+
+
+                <a href="#access-points"
+                   class="sidebar-link">
+
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2">
+
+                        <path d="M12 21s7-4.4 7-10V5l-7-3-7 3v6c0 5.6 7 10 7 10z"/>
+
+                    </svg>
+
+                    Access Points
+
+                </a>
+
+
+
+                <a href="#activity"
+                   class="sidebar-link">
+
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2">
+
+                        <path d="M4 6h16"/>
+                        <path d="M4 12h16"/>
+                        <path d="M4 18h16"/>
+
+                    </svg>
+
+                    Activity Logs
+
+                </a>
+
+
+            </nav>
+
+        </div>
+
+
+
+        <!-- SYSTEM -->
+
+        <div class="sidebar-section">
+
+            <div class="sidebar-section-title">
+                System
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+
+                <a href="terminal-security.html"
+                   class="sidebar-link">
+
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2">
+
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+
+                    </svg>
+
+                    Security Terminal
+
+                </a>
+
+
+            </nav>
+
+        </div>
+
+
+
+        <!-- SIDEBAR USER -->
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-user">
+
+
+                <div class="avatar"
+                     id="adminAvatar">
+
+                    --
+
+                </div>
+
+
+                <div class="sidebar-user-info">
+
+                    <div class="sidebar-user-name"
+                         id="adminName">
+
+                        —
+
+                    </div>
+
+
+                    <div class="sidebar-user-role">
+
+                        Access Control Admin
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
 
             <div>
 
-                <div class="activity-name">
-                    Card verification
+                <div class="topbar-title">
+                    Administration Console
                 </div>
 
-                <div class="activity-location">
-                    Main gate uses card status verification
+
+                <div class="topbar-subtitle">
+                    Smart Student Identity & Access Control System
                 </div>
 
             </div>
 
-            <div class="feed-result-granted">
-                ACTIVE
+
+
+            <div class="topbar-right">
+
+
+                <span class="status-pill status-online"
+                      id="databaseStatus">
+
+                    <span class="status-dot"></span>
+
+                    Checking database...
+
+                </span>
+
+
+
+                <a href="index.html"
+                   class="btn btn-secondary">
+
+                    Sign out
+
+                </a>
+
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             ADMIN PAGE
+        ================================================== -->
+
+        <div class="admin-page">
+
+            <div class="admin-container">
+
+
+
+                <!-- =================================================
+                     DASHBOARD HEADING
+                ================================================== -->
+
+                <div class="page-heading"
+                     id="dashboard">
+
+                    <h1>
+                        Access Control Dashboard
+                    </h1>
+
+                    <p>
+                        Monitor student identity cards, RFID status and access infrastructure.
+                    </p>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     STATISTICS
+                ================================================== -->
+
+                <div class="stats-grid">
+
+
+                    <!-- TOTAL STUDENTS -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-label">
+                            Total Students
+                        </div>
+
+                        <div class="stat-value"
+                             id="totalStudents">
+
+                            —
+
+                        </div>
+
+                        <div class="stat-note">
+                            Registered in system
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- TOTAL CARDS -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-label">
+                            RFID Cards
+                        </div>
+
+                        <div class="stat-value"
+                             id="totalCards">
+
+                            —
+
+                        </div>
+
+                        <div class="stat-note">
+                            Cards issued
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ACTIVE CARDS -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-label">
+                            Active Cards
+                        </div>
+
+                        <div class="stat-value"
+                             id="activeCards">
+
+                            —
+
+                        </div>
+
+                        <div class="stat-note">
+                            Currently enabled
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- INACTIVE CARDS -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-label">
+                            Inactive Cards
+                        </div>
+
+                        <div class="stat-value"
+                             id="inactiveCards">
+
+                            —
+
+                        </div>
+
+                        <div class="stat-note">
+                            Access disabled
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     CARD MANAGEMENT
+                ================================================== -->
+
+                <div class="lookup-panel"
+                     id="card-management">
+
+
+                    <div class="lookup-title">
+                        RFID Card Lookup & Management
+                    </div>
+
+
+                    <p style="
+                        color:var(--muted);
+                        font-size:10px;
+                        margin-bottom:14px;
+                    ">
+
+                        Search using RFID UID, Student ID or Registration Number.
+
+                    </p>
+
+
+
+                    <!-- SEARCH -->
+
+                    <div class="lookup-row">
+
+
+                        <input
+                            class="form-input"
+                            id="lookupInput"
+                            type="text"
+                            autocomplete="off"
+                            placeholder="e.g. A1B2C3D4 or 2022-04-12345">
+
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="searchButton"
+                            onclick="lookupCard()">
+
+                            Search Card
+
+                        </button>
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         SEARCH RESULT
+                    ================================================== -->
+
+                    <div id="lookupResult"
+                         style="display:none;margin-top:20px;">
+
+
+                        <!-- STUDENT SUMMARY -->
+
+                        <div style="
+                            display:flex;
+                            align-items:center;
+                            gap:15px;
+                            padding:18px;
+                            background:var(--surface-2);
+                            border:1px solid var(--border);
+                            border-radius:var(--radius-md);
+                        ">
+
+
+                            <!-- AVATAR -->
+
+                            <div class="student-avatar"
+                                 id="lookupAvatar">
+
+                                <img
+                                    id="lookupPhoto"
+                                    src=""
+                                    alt="Student photo"
+                                    style="
+                                        display:none;
+                                        width:100%;
+                                        height:100%;
+                                        object-fit:cover;
+                                        border-radius:inherit;
+                                    ">
+
+                                <span id="lookupAvatarText">
+                                    --
+                                </span>
+
+                            </div>
+
+
+
+                            <!-- STUDENT DETAILS -->
+
+                            <div style="flex:1;">
+
+
+                                <div class="student-name"
+                                     id="lookupName">
+
+                                    —
+
+                                </div>
+
+
+                                <div class="student-program"
+                                     id="lookupProgramme">
+
+                                    —
+
+                                </div>
+
+
+                                <div class="student-year"
+                                     id="lookupYear">
+
+                                    —
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- CARD STATUS -->
+
+                            <div id="lookupStatus"
+                                 class="card-status inactive">
+
+                                <span class="card-status-dot"></span>
+
+                                —
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             CARD INFORMATION
+                        ================================================== -->
+
+                        <div class="student-info-grid"
+                             style="margin-top:14px;">
+
+
+                            <!-- STUDENT ID -->
+
+                            <div class="info-item">
+
+                                <div class="info-label">
+                                    Student ID
+                                </div>
+
+                                <div class="info-value"
+                                     id="lookupStudentId">
+
+                                    —
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- REGISTRATION NUMBER -->
+
+                            <div class="info-item">
+
+                                <div class="info-label">
+                                    Registration Number
+                                </div>
+
+                                <div class="info-value mono"
+                                     id="lookupRegNo">
+
+                                    —
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- RFID UID -->
+
+                            <div class="info-item">
+
+                                <div class="info-label">
+                                    RFID UID
+                                </div>
+
+                                <div class="info-value mono"
+                                     id="lookupUid">
+
+                                    —
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- CARD ID -->
+
+                            <div class="info-item">
+
+                                <div class="info-label">
+                                    Card ID
+                                </div>
+
+                                <div class="info-value"
+                                     id="lookupCardId">
+
+                                    —
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- ENROLLMENT STATUS -->
+
+                            <div class="info-item">
+
+                                <div class="info-label">
+                                    Enrollment Status
+                                </div>
+
+                                <div class="info-value"
+                                     id="lookupEnrollment">
+
+                                    —
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- ISSUE DATE -->
+
+                            <div class="info-item">
+
+                                <div class="info-label">
+                                    Issue Date
+                                </div>
+
+                                <div class="info-value"
+                                     id="lookupIssueDate">
+
+                                    —
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             CARD STATUS ACTIONS
+                        ================================================== -->
+
+                        <div style="
+                            display:flex;
+                            flex-wrap:wrap;
+                            gap:10px;
+                            margin-top:14px;
+                        ">
+
+
+                            <button
+                                type="button"
+                                class="btn btn-success"
+                                id="activateButton"
+                                onclick="changeCardStatus('ACTIVE')">
+
+                                ✓ Activate Card
+
+                            </button>
+
+
+
+                            <button
+                                type="button"
+                                class="btn btn-danger"
+                                id="deactivateButton"
+                                onclick="changeCardStatus('INACTIVE')">
+
+                                × Deactivate Card
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         EMPTY STATE
+                    ================================================== -->
+
+                    <div id="lookupEmpty"
+                         class="empty-state">
+
+
+                        <div class="empty-icon">
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="2">
+
+                                <rect x="3"
+                                      y="5"
+                                      width="18"
+                                      height="14"
+                                      rx="2"/>
+
+                                <path d="M3 10h18"/>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div class="empty-title">
+                            No card selected
+                        </div>
+
+
+                        <div class="empty-text">
+                            Search for a student or RFID card to view its information.
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ACCESS POINTS
+                ================================================== -->
+
+                <div id="access-points">
+
+
+                    <div class="page-heading"
+                         style="
+                            margin-top:28px;
+                            margin-bottom:14px;
+                         ">
+
+                        <h1 style="font-size:18px;">
+                            Access Points
+                        </h1>
+
+
+                        <p>
+                            Current RFID-enabled access locations.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="access-points-grid">
+
+
+                        <!-- MAIN GATE -->
+
+                        <div class="access-point-card">
+
+
+                            <div class="access-point-top">
+
+                                <div>
+
+                                    <div class="access-point-name">
+                                        Main Gate
+                                    </div>
+
+                                    <div class="access-point-code">
+                                        GATE-01
+                                    </div>
+
+                                </div>
+
+
+                                <span class="status-pill status-online">
+
+                                    <span class="status-dot"></span>
+
+                                    ONLINE
+
+                                </span>
+
+                            </div>
+
+
+                            <div style="
+                                color:var(--muted);
+                                font-size:10px;
+                                margin-top:14px;
+                            ">
+
+                                Policy:
+
+                                <strong style="color:var(--text-soft);">
+                                    GATE-BASIC
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- LIBRARY -->
+
+                        <div class="access-point-card">
+
+
+                            <div class="access-point-top">
+
+                                <div>
+
+                                    <div class="access-point-name">
+                                        Library Entrance
+                                    </div>
+
+                                    <div class="access-point-code">
+                                        READER-04
+                                    </div>
+
+                                </div>
+
+
+                                <span class="status-pill status-online">
+
+                                    <span class="status-dot"></span>
+
+                                    ONLINE
+
+                                </span>
+
+                            </div>
+
+
+                            <div style="
+                                color:var(--muted);
+                                font-size:10px;
+                                margin-top:14px;
+                            ">
+
+                                Policy:
+
+                                <strong style="color:var(--text-soft);">
+                                    GATE-BASIC
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- EXAM ROOM -->
+
+                        <div class="access-point-card">
+
+
+                            <div class="access-point-top">
+
+                                <div>
+
+                                    <div class="access-point-name">
+                                        Exam Room 204
+                                    </div>
+
+                                    <div class="access-point-code">
+                                        READER-11
+                                    </div>
+
+                                </div>
+
+
+                                <span class="status-pill status-offline">
+
+                                    <span class="status-dot"></span>
+
+                                    OFFLINE
+
+                                </span>
+
+                            </div>
+
+
+                            <div style="
+                                color:var(--muted);
+                                font-size:10px;
+                                margin-top:14px;
+                            ">
+
+                                Policy:
+
+                                <strong style="color:var(--text-soft);">
+                                    EXAM-ROOM
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ACTIVITY / SYSTEM INFORMATION
+                ================================================== -->
+
+                <div id="activity"
+                     class="activity-panel"
+                     style="margin-top:20px;">
+
+
+                    <div class="activity-header">
+                        System Information
+                    </div>
+
+
+                    <div class="activity-list">
+
+
+                        <!-- DATABASE -->
+
+                        <div class="activity-row">
+
+
+                            <div class="activity-time">
+                                SYSTEM
+                            </div>
+
+
+                            <div>
+
+                                <div class="activity-name">
+                                    Centralized database
+                                </div>
+
+
+                                <div class="activity-location">
+                                    MySQL · smart_student_access
+                                </div>
+
+                            </div>
+
+
+                            <div id="systemDatabaseResult"
+                                 class="feed-result-granted">
+
+                                CHECKING
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- RFID -->
+
+                        <div class="activity-row">
+
+
+                            <div class="activity-time">
+                                RFID
+                            </div>
+
+
+                            <div>
+
+                                <div class="activity-name">
+                                    Card verification
+                                </div>
+
+
+                                <div class="activity-location">
+                                    Main gate uses RFID card status verification
+                                </div>
+
+                            </div>
+
+
+                            <div class="feed-result-granted">
+
+                                ACTIVE
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- API -->
+
+                        <div class="activity-row">
+
+
+                            <div class="activity-time">
+                                API
+                            </div>
+
+
+                            <div>
+
+                                <div class="activity-name">
+                                    Flask backend
+                                </div>
+
+
+                                <div class="activity-location">
+                                    localhost:5000
+                                </div>
+
+                            </div>
+
+
+                            <div id="apiResult"
+                                 class="feed-result-granted">
+
+                                CHECKING
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
             </div>
 
         </div>
 
-    </div>
 
-</div>
+    </main>
 
-
-</div>
-</div>
-
-</main>
 
 </div>
 
@@ -930,21 +1161,30 @@
 
 
 
+<!-- =====================================================
+     DATA.JS
+===================================================== -->
+
 <script src="data.js"></script>
 
 
+
+<!-- =====================================================
+     ADMIN JAVASCRIPT
+===================================================== -->
+
 <script>
+
 
 /* =========================================================
    CONFIGURATION
 ========================================================= */
 
-const API_URL =
-    "http://localhost:5000/api";
+const API_URL = API_BASE_URL ||
+                "http://localhost:5000/api";
 
 
 let selectedCardId = null;
-
 
 
 /* =========================================================
@@ -954,7 +1194,7 @@ let selectedCardId = null;
 const staff = requireStaff();
 
 
-if(staff){
+if (staff) {
 
     const avatar =
         document.getElementById("adminAvatar");
@@ -965,6 +1205,7 @@ if(staff){
 
     avatar.textContent =
         staff.initials || "--";
+
 
     name.textContent =
         staff.name || "Administrator";
@@ -977,17 +1218,35 @@ if(staff){
    DATABASE STATUS
 ========================================================= */
 
-async function checkDatabase(){
+async function checkDatabase() {
 
     const status =
-        document.getElementById("databaseStatus");
+        document.getElementById(
+            "databaseStatus"
+        );
 
 
-    try{
+    const systemResult =
+        document.getElementById(
+            "systemDatabaseResult"
+        );
+
+
+    const apiResult =
+        document.getElementById(
+            "apiResult"
+        );
+
+
+    try {
 
         const response =
             await fetch(
-                API_URL + "/test-db"
+                API_URL + "/test-db",
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
             );
 
 
@@ -995,52 +1254,110 @@ async function checkDatabase(){
             await response.json();
 
 
-        if(data.success){
-
-            status.className =
-                "status-pill status-online";
-
-            status.innerHTML = `
-                <span class="status-dot"></span>
-                DATABASE ONLINE
-            `;
-
-        }else{
+        if (!response.ok ||
+            !data.success) {
 
             throw new Error(
+                data.message ||
                 "Database unavailable"
             );
 
         }
 
 
-    }catch(error){
+
+        /* TOP STATUS */
+
+        status.className =
+            "status-pill status-online";
+
+
+        status.innerHTML = `
+            <span class="status-dot"></span>
+            DATABASE ONLINE
+        `;
+
+
+
+        /* SYSTEM STATUS */
+
+        systemResult.className =
+            "feed-result-granted";
+
+
+        systemResult.textContent =
+            "CONNECTED";
+
+
+
+        /* API STATUS */
+
+        apiResult.className =
+            "feed-result-granted";
+
+
+        apiResult.textContent =
+            "ONLINE";
+
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            "Database connection error:",
+            error
+        );
+
 
         status.className =
             "status-pill status-offline";
+
 
         status.innerHTML = `
             <span class="status-dot"></span>
             DATABASE OFFLINE
         `;
 
+
+
+        systemResult.className =
+            "feed-result-denied";
+
+
+        systemResult.textContent =
+            "OFFLINE";
+
+
+
+        apiResult.className =
+            "feed-result-denied";
+
+
+        apiResult.textContent =
+            "OFFLINE";
+
     }
 
 }
 
 
-
 /* =========================================================
-   LOAD STATISTICS
+   LOAD DASHBOARD STATISTICS
 ========================================================= */
 
-async function loadStatistics(){
+async function loadStatistics() {
 
-    try{
+    try {
 
         const response =
             await fetch(
-                API_URL + "/admin/statistics"
+                API_URL + "/admin/stats",
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
             );
 
 
@@ -1048,48 +1365,110 @@ async function loadStatistics(){
             await response.json();
 
 
-        if(!data.success){
+        if (!response.ok ||
+            !data.success) {
 
             throw new Error(
-                data.message
+                data.message ||
+                "Unable to load statistics."
             );
 
         }
 
 
+        /* =========================================
+           GET STATISTICS FROM API RESPONSE
+           
+           Backend returns:
+           
+           {
+               "success": true,
+               "stats": {
+                   "total_students": 5,
+                   "total_cards": 1,
+                   "active_cards": 1,
+                   "inactive_cards": 0
+               }
+           }
+        ========================================= */
+
         const stats =
-            data.statistics;
+            data.stats;
+
+
+
+        /* TOTAL STUDENTS */
+
+        document.getElementById(
+            "totalStudents"
+        ).textContent =
+            stats.total_students ?? 0;
+
+
+
+        /* TOTAL RFID CARDS */
+
+        document.getElementById(
+            "totalCards"
+        ).textContent =
+            stats.total_cards ?? 0;
+
+
+
+        /* ACTIVE CARDS */
+
+        document.getElementById(
+            "activeCards"
+        ).textContent =
+            stats.active_cards ?? 0;
+
+
+
+        /* INACTIVE CARDS */
+
+        document.getElementById(
+            "inactiveCards"
+        ).textContent =
+            stats.inactive_cards ?? 0;
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            "Statistics error:",
+            error
+        );
 
 
         document.getElementById(
             "totalStudents"
         ).textContent =
-            stats.total_students;
+            "—";
 
 
         document.getElementById(
             "totalCards"
         ).textContent =
-            stats.total_cards;
+            "—";
 
 
         document.getElementById(
             "activeCards"
         ).textContent =
-            stats.active_cards;
+            "—";
 
 
         document.getElementById(
             "inactiveCards"
         ).textContent =
-            stats.inactive_cards;
+            "—";
 
 
-    }catch(error){
-
-        console.error(
-            "Statistics error:",
-            error
+        showToast(
+            "Unable to load dashboard statistics.",
+            "error"
         );
 
     }
@@ -1099,10 +1478,10 @@ async function loadStatistics(){
 
 
 /* =========================================================
-   LOOKUP CARD
+   CARD LOOKUP
 ========================================================= */
 
-async function lookupCard(){
+async function lookupCard() {
 
     const input =
         document.getElementById(
@@ -1110,49 +1489,82 @@ async function lookupCard(){
         );
 
 
-    const value =
+    const searchValue =
         input.value.trim();
 
 
-    if(!value){
+    const resultPanel =
+        document.getElementById(
+            "lookupResult"
+        );
+
+
+    const emptyPanel =
+        document.getElementById(
+            "lookupEmpty"
+        );
+
+
+    const searchButton =
+        document.getElementById(
+            "searchButton"
+        );
+
+
+
+    if (!searchValue) {
 
         showToast(
-            "Enter an RFID UID, Student ID or Registration Number."
+            "Enter an RFID UID, Student ID or Registration Number.",
+            "warning"
         );
+
+        input.focus();
 
         return;
 
     }
 
 
-    const result =
-        document.getElementById(
-            "lookupResult"
-        );
 
+    /* CLEAR PREVIOUS RESULT */
 
-    const empty =
-        document.getElementById(
-            "lookupEmpty"
-        );
-
-
-    result.style.display =
+    resultPanel.style.display =
         "none";
 
 
-    try{
+    emptyPanel.style.display =
+        "none";
 
-        showToast(
-            "Searching database..."
-        );
 
+    selectedCardId =
+        null;
+
+
+
+    /* DISABLE SEARCH */
+
+    searchButton.disabled =
+        true;
+
+
+    searchButton.textContent =
+        "Searching...";
+
+
+    try {
 
         const response =
             await fetch(
                 API_URL +
-                "/admin/card-lookup?search=" +
-                encodeURIComponent(value)
+                "/admin/search?q=" +
+                encodeURIComponent(
+                    searchValue
+                ),
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
             );
 
 
@@ -1160,47 +1572,73 @@ async function lookupCard(){
             await response.json();
 
 
-        if(!response.ok ||
-           !data.success){
+
+        if (!response.ok ||
+            !data.success) {
 
             throw new Error(
                 data.message ||
-                "Card not found"
+                "No matching card found."
             );
 
         }
 
 
-        displayCard(data);
+
+        displayCard(
+            data
+        );
 
 
-        result.style.display =
+        resultPanel.style.display =
             "block";
 
 
-        empty.style.display =
+        emptyPanel.style.display =
             "none";
 
 
         showToast(
-            "Student card found."
+            "Student card found.",
+            "success"
+        );
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            "Card lookup error:",
+            error
         );
 
 
-    }catch(error){
-
-        result.style.display =
+        resultPanel.style.display =
             "none";
 
 
-        empty.style.display =
+        emptyPanel.style.display =
             "block";
 
 
         showToast(
             error.message ||
-            "Card not found."
+            "Card not found.",
+            "error"
         );
+
+    }
+
+
+    finally {
+
+        searchButton.disabled =
+            false;
+
+
+        searchButton.textContent =
+            "Search Card";
 
     }
 
@@ -1212,99 +1650,136 @@ async function lookupCard(){
    DISPLAY CARD
 ========================================================= */
 
-function displayCard(data){
+function displayCard(data) {
 
     const student =
-        data.student;
+        data.student || {};
+
 
     const card =
-        data.card;
+        data.card || {};
 
+
+
+    /* SELECTED CARD ID */
 
     selectedCardId =
         card.card_id;
 
 
-    /* Student name */
+
+    /* =====================================================
+       STUDENT NAME
+    ====================================================== */
 
     document.getElementById(
         "lookupName"
     ).textContent =
-        student.full_name;
+        student.full_name ||
+        "Unknown Student";
 
 
-    /* Programme */
+
+    /* =====================================================
+       PROGRAMME
+    ====================================================== */
 
     document.getElementById(
         "lookupProgramme"
     ).textContent =
-        student.programme;
+        student.programme ||
+        "—";
 
 
-    /* Year */
+
+    /* =====================================================
+       YEAR
+    ====================================================== */
 
     document.getElementById(
         "lookupYear"
     ).textContent =
-        "Year " +
-        student.year_of_study;
+        student.year_of_study
+            ? "Year " +
+              student.year_of_study
+            : "—";
 
 
-    /* Avatar */
 
-    const avatar =
-        document.getElementById(
-            "lookupAvatar"
-        );
+    /* =====================================================
+       AVATAR / PHOTO
+    ====================================================== */
 
-
-    avatar.textContent =
-        getInitials(
-            student.full_name
-        );
+    setLookupPhoto(
+        student.full_name,
+        student.photo
+    );
 
 
-    /* Student ID */
+
+    /* =====================================================
+       STUDENT ID
+    ====================================================== */
 
     document.getElementById(
         "lookupStudentId"
     ).textContent =
-        student.student_id;
+        student.student_id ??
+        "—";
 
 
-    /* Registration */
+
+    /* =====================================================
+       REGISTRATION NUMBER
+    ====================================================== */
 
     document.getElementById(
         "lookupRegNo"
     ).textContent =
-        student.reg_no;
+        student.reg_no ||
+        "—";
 
 
-    /* RFID */
+
+    /* =====================================================
+       RFID UID
+    ====================================================== */
 
     document.getElementById(
         "lookupUid"
     ).textContent =
-        card.rfid_uid;
+        card.rfid_uid ||
+        "—";
 
 
-    /* Card ID */
+
+    /* =====================================================
+       CARD ID
+    ====================================================== */
 
     document.getElementById(
         "lookupCardId"
     ).textContent =
-        card.card_id;
+        card.card_id ??
+        "—";
 
 
-    /* Enrollment */
+
+    /* =====================================================
+       ENROLLMENT
+    ====================================================== */
 
     document.getElementById(
         "lookupEnrollment"
     ).textContent =
-        student.enrollment_status || "—";
+        student.enrollment_status ||
+        "—";
 
 
-    /* Issue date */
+
+    /* =====================================================
+       ISSUE DATE
+    ====================================================== */
 
     document.getElementById(
         "lookupIssueDate"
@@ -1314,7 +1789,10 @@ function displayCard(data){
         );
 
 
-    /* Card status */
+
+    /* =====================================================
+       CARD STATUS
+    ====================================================== */
 
     updateStatusDisplay(
         card.card_status
@@ -1325,10 +1803,101 @@ function displayCard(data){
 
 
 /* =========================================================
+   PHOTO / AVATAR
+========================================================= */
+
+function setLookupPhoto(
+    studentName,
+    photo
+) {
+
+    const image =
+        document.getElementById(
+            "lookupPhoto"
+        );
+
+
+    const fallback =
+        document.getElementById(
+            "lookupAvatarText"
+        );
+
+
+    const initials =
+        getInitials(
+            studentName
+        );
+
+
+    fallback.textContent =
+        initials;
+
+
+
+    /* NO PHOTO */
+
+    if (!photo) {
+
+        image.src =
+            "";
+
+
+        image.style.display =
+            "none";
+
+
+        fallback.style.display =
+            "block";
+
+
+        return;
+
+    }
+
+
+
+    /* PHOTO EXISTS */
+
+    image.src =
+        photo;
+
+
+    image.style.display =
+        "block";
+
+
+    fallback.style.display =
+        "none";
+
+
+
+    /* PHOTO FAILED */
+
+    image.onerror =
+        function () {
+
+            image.style.display =
+                "none";
+
+
+            fallback.style.display =
+                "block";
+
+
+            fallback.textContent =
+                initials;
+
+        };
+
+}
+
+
+
+/* =========================================================
    CARD STATUS DISPLAY
 ========================================================= */
 
-function updateStatusDisplay(status){
+function updateStatusDisplay(status) {
 
     const element =
         document.getElementById(
@@ -1337,22 +1906,33 @@ function updateStatusDisplay(status){
 
 
     const cleanStatus =
-        String(status || "")
-        .toUpperCase();
+        String(
+            status || ""
+        ).toUpperCase();
+
+
+
+    const isActive =
+        cleanStatus === "ACTIVE";
+
 
 
     element.className =
         "card-status " +
         (
-            cleanStatus === "ACTIVE"
-            ? "active"
-            : "inactive"
+            isActive
+                ? "active"
+                : "inactive"
         );
 
 
+
     element.innerHTML = `
+
         <span class="card-status-dot"></span>
+
         ${cleanStatus || "UNKNOWN"}
+
     `;
 
 }
@@ -1363,45 +1943,103 @@ function updateStatusDisplay(status){
    CHANGE CARD STATUS
 ========================================================= */
 
-async function changeCardStatus(newStatus){
+async function changeCardStatus(
+    newStatus
+) {
 
-    if(!selectedCardId){
+
+    /* VALIDATE STATUS */
+
+    if (
+        newStatus !== "ACTIVE" &&
+        newStatus !== "INACTIVE"
+    ) {
 
         showToast(
-            "Search for a card first."
+            "Invalid card status.",
+            "error"
         );
 
         return;
 
     }
 
+
+
+    /* CHECK SELECTED CARD */
+
+    if (!selectedCardId) {
+
+        showToast(
+            "Search for a card first.",
+            "warning"
+        );
+
+        return;
+
+    }
+
+
+
+    /* ACTION TEXT */
 
     const action =
         newStatus === "ACTIVE"
-        ? "activate"
-        : "deactivate";
+            ? "activate"
+            : "deactivate";
 
+
+
+    /* CONFIRM */
 
     const confirmed =
-        confirm(
-            `Are you sure you want to ${action} this RFID card?`
+        window.confirm(
+            "Are you sure you want to " +
+            action +
+            " this RFID card?"
         );
 
 
-    if(!confirmed){
+    if (!confirmed) {
 
         return;
 
     }
 
 
-    try{
+
+    /* BUTTONS */
+
+    const activateButton =
+        document.getElementById(
+            "activateButton"
+        );
+
+
+    const deactivateButton =
+        document.getElementById(
+            "deactivateButton"
+        );
+
+
+    activateButton.disabled =
+        true;
+
+
+    deactivateButton.disabled =
+        true;
+
+
+
+    try {
 
         const response =
             await fetch(
                 API_URL +
                 "/admin/cards/" +
-                selectedCardId +
+                encodeURIComponent(
+                    selectedCardId
+                ) +
                 "/status",
                 {
                     method: "PUT",
@@ -1411,10 +2049,11 @@ async function changeCardStatus(newStatus){
                             "application/json"
                     },
 
-                    body: JSON.stringify({
-                        card_status:
-                            newStatus
-                    })
+                    body:
+                        JSON.stringify({
+                            card_status:
+                                newStatus
+                        })
                 }
             );
 
@@ -1423,38 +2062,70 @@ async function changeCardStatus(newStatus){
             await response.json();
 
 
-        if(!response.ok ||
-           !data.success){
+
+        if (!response.ok ||
+            !data.success) {
 
             throw new Error(
                 data.message ||
-                "Unable to update card."
+                "Unable to update card status."
             );
 
         }
 
 
+
+        /* UPDATE STATUS */
+
         updateStatusDisplay(
-            data.card_status
+            data.card_status ||
+            newStatus
         );
 
+
+
+        /* REFRESH DASHBOARD */
+
+        await loadStatistics();
+
+
+
+        /* MESSAGE */
 
         showToast(
-            data.message
+            data.message ||
+            "Card status updated successfully.",
+            "success"
         );
 
-
-        /* Refresh statistics */
-
-        loadStatistics();
+    }
 
 
-    }catch(error){
+    catch (error) {
+
+        console.error(
+            "Status update error:",
+            error
+        );
+
 
         showToast(
             error.message ||
-            "Card status update failed."
+            "Card status update failed.",
+            "error"
         );
+
+    }
+
+
+    finally {
+
+        activateButton.disabled =
+            false;
+
+
+        deactivateButton.disabled =
+            false;
 
     }
 
@@ -1463,26 +2134,27 @@ async function changeCardStatus(newStatus){
 
 
 /* =========================================================
-   HELPERS
+   GET INITIALS
 ========================================================= */
 
-function getInitials(name){
+function getInitials(name) {
 
-    if(!name){
+    if (!name) {
 
         return "--";
 
     }
 
 
-    return name
+    return String(name)
         .trim()
         .split(/\s+/)
-        .slice(0,2)
+        .slice(0, 2)
         .map(
             word =>
-                word.charAt(0)
-                .toUpperCase()
+                word
+                    .charAt(0)
+                    .toUpperCase()
         )
         .join("");
 
@@ -1490,26 +2162,37 @@ function getInitials(name){
 
 
 
-function formatDate(date){
+/* =========================================================
+   FORMAT DATE
+========================================================= */
 
-    if(!date){
+function formatDate(date) {
+
+    if (!date) {
 
         return "—";
 
     }
 
 
+
+    /* MYSQL DATE */
+
     const parsed =
         new Date(date);
 
 
-    if(Number.isNaN(
-        parsed.getTime()
-    )){
 
-        return date;
+    if (
+        Number.isNaN(
+            parsed.getTime()
+        )
+    ) {
+
+        return String(date);
 
     }
+
 
 
     return parsed.toLocaleDateString(
@@ -1529,12 +2212,16 @@ function formatDate(date){
    TOAST
 ========================================================= */
 
-function showToast(message){
+function showToast(
+    message,
+    type = "info"
+) {
 
     const toast =
         document.getElementById(
             "toast"
         );
+
 
     const text =
         document.getElementById(
@@ -1546,9 +2233,26 @@ function showToast(message){
         message;
 
 
+
+    /* OPTIONAL TYPE CLASS */
+
+    toast.classList.remove(
+        "success",
+        "error",
+        "warning",
+        "info"
+    );
+
+
+    toast.classList.add(
+        type
+    );
+
+
     toast.classList.add(
         "show"
     );
+
 
 
     clearTimeout(
@@ -1558,7 +2262,7 @@ function showToast(message){
 
     window.toastTimer =
         setTimeout(
-            () => {
+            function () {
 
                 toast.classList.remove(
                     "show"
@@ -1576,30 +2280,86 @@ function showToast(message){
    ENTER KEY SEARCH
 ========================================================= */
 
-document
-    .getElementById("lookupInput")
-    .addEventListener(
-        "keydown",
-        function(event){
+const lookupInput =
+    document.getElementById(
+        "lookupInput"
+    );
 
-            if(event.key === "Enter"){
 
-                lookupCard();
+lookupInput.addEventListener(
+    "keydown",
+    function(event) {
 
-            }
+        if (
+            event.key === "Enter"
+        ) {
+
+            event.preventDefault();
+
+            lookupCard();
 
         }
-    );
+
+    }
+);
 
 
 
 /* =========================================================
-   START
+   SIDEBAR NAVIGATION
 ========================================================= */
 
-checkDatabase();
+const sidebarLinks =
+    document.querySelectorAll(
+        ".sidebar-link[href^='#']"
+    );
 
-loadStatistics();
+
+sidebarLinks.forEach(
+    function(link) {
+
+        link.addEventListener(
+            "click",
+            function() {
+
+                sidebarLinks.forEach(
+                    function(item) {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                link.classList.add(
+                    "active"
+                );
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   START ADMIN CONSOLE
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function() {
+
+        await checkDatabase();
+
+        await loadStatistics();
+
+    }
+);
+
 
 </script>
 

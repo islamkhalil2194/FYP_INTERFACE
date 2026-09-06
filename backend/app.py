@@ -20,7 +20,7 @@ def home():
 
 
 # =========================================================
-# TEST DATABASE CONNECTION
+# DATABASE TEST
 # =========================================================
 
 @app.route("/api/test-db")
@@ -63,8 +63,7 @@ def test_database():
 
 
 # =========================================================
-# SECURITY TERMINAL
-# GET CARD INFORMATION USING RFID UID
+# RFID CARD LOOKUP
 # =========================================================
 
 @app.route("/api/cards/<rfid_uid>", methods=["GET"])
@@ -114,7 +113,6 @@ def get_card_information(rfid_uid):
         cursor.close()
         connection.close()
 
-        # RFID NOT FOUND
         if record is None:
 
             return jsonify({
@@ -123,20 +121,13 @@ def get_card_information(rfid_uid):
                 "message": "RFID card not found"
             }), 404
 
-
-        # Gate policy:
-        # ACTIVE card = GRANTED
-        # Anything else = DENIED
-
         access_granted = (
             record["card_status"] == "ACTIVE"
         )
 
-
         return jsonify({
 
             "success": True,
-
             "found": True,
 
             "student": {
@@ -153,26 +144,26 @@ def get_card_information(rfid_uid):
                 "card_id": record["card_id"],
                 "rfid_uid": record["rfid_uid"],
                 "card_status": record["card_status"],
-                "issue_date":
+                "issue_date": (
                     record["issue_date"].isoformat()
                     if record["issue_date"]
                     else None
+                )
             },
 
             "access": {
                 "granted": access_granted,
-
-                "decision":
+                "decision": (
                     "GRANTED"
                     if access_granted
-                    else "DENIED",
-
-                "reason":
+                    else "DENIED"
+                ),
+                "reason": (
                     "Active RFID card"
                     if access_granted
                     else "RFID card is inactive"
+                )
             }
-
         })
 
     except Exception as e:
@@ -187,26 +178,24 @@ def get_card_information(rfid_uid):
 
 
 # =========================================================
-# ADMIN — LOOK UP CARD
-#
-# Search using:
-#   RFID UID
-#   Student ID
-#   Registration Number
+# ADMIN SEARCH
+# Search by:
+# - RFID UID
+# - Registration number
+# - Student ID
 # =========================================================
 
-@app.route("/api/admin/card-lookup", methods=["GET"])
-def admin_card_lookup():
+@app.route("/api/admin/search", methods=["GET"])
+def admin_search():
 
-    search = request.args.get("search", "").strip()
+    search = request.args.get("q", "").strip()
 
     if not search:
 
         return jsonify({
             "success": False,
-            "message": "Please provide a search value"
+            "message": "Search value is required"
         }), 400
-
 
     connection = get_db_connection()
 
@@ -217,14 +206,12 @@ def admin_card_lookup():
             "message": "Database connection failed"
         }), 500
 
-
     try:
 
         cursor = connection.cursor(dictionary=True)
 
         query = """
             SELECT
-
                 s.student_id,
                 s.reg_no,
                 s.full_name,
@@ -238,14 +225,14 @@ def admin_card_lookup():
                 r.card_status,
                 r.issue_date
 
-            FROM rfid_cards r
+            FROM students s
 
-            INNER JOIN students s
-                ON r.student_id = s.student_id
+            LEFT JOIN rfid_cards r
+                ON s.student_id = r.student_id
 
             WHERE
-                r.rfid_uid = %s
-                OR s.reg_no = %s
+                s.reg_no = %s
+                OR r.rfid_uid = %s
                 OR CAST(s.student_id AS CHAR) = %s
 
             LIMIT 1
@@ -261,15 +248,13 @@ def admin_card_lookup():
         cursor.close()
         connection.close()
 
-
         if record is None:
 
             return jsonify({
-                "success": False,
+                "success": True,
                 "found": False,
                 "message": "No student or RFID card found"
-            }), 404
-
+            })
 
         return jsonify({
 
@@ -290,14 +275,13 @@ def admin_card_lookup():
                 "card_id": record["card_id"],
                 "rfid_uid": record["rfid_uid"],
                 "card_status": record["card_status"],
-                "issue_date":
+                "issue_date": (
                     record["issue_date"].isoformat()
                     if record["issue_date"]
                     else None
+                )
             }
-
         })
-
 
     except Exception as e:
 
@@ -311,30 +295,34 @@ def admin_card_lookup():
 
 
 # =========================================================
-# ADMIN — UPDATE CARD STATUS
-#
-# Allowed statuses:
-#   ACTIVE
-#   INACTIVE
+# UPDATE RFID CARD STATUS
+# Allowed:
+# ACTIVE
+# INACTIVE
 # =========================================================
 
 @app.route("/api/admin/cards/<int:card_id>/status", methods=["PUT"])
 def update_card_status(card_id):
 
-    data = request.get_json(silent=True) or {}
+    data = request.get_json(silent=True)
+
+    if not data:
+
+        return jsonify({
+            "success": False,
+            "message": "Request body is required"
+        }), 400
 
     new_status = str(
-        data.get("card_status", "")
+        data.get("status", "")
     ).strip().upper()
-
 
     if new_status not in ["ACTIVE", "INACTIVE"]:
 
         return jsonify({
             "success": False,
-            "message": "Invalid card status. Use ACTIVE or INACTIVE."
+            "message": "Status must be ACTIVE or INACTIVE"
         }), 400
-
 
     connection = get_db_connection()
 
@@ -345,27 +333,22 @@ def update_card_status(card_id):
             "message": "Database connection failed"
         }), 500
 
-
     try:
 
         cursor = connection.cursor()
 
-
-        # Check whether card exists
+        update_query = """
+            UPDATE rfid_cards
+            SET card_status = %s
+            WHERE card_id = %s
+        """
 
         cursor.execute(
-            """
-            SELECT card_id
-            FROM rfid_cards
-            WHERE card_id = %s
-            """,
-            (card_id,)
+            update_query,
+            (new_status, card_id)
         )
 
-        card = cursor.fetchone()
-
-
-        if card is None:
+        if cursor.rowcount == 0:
 
             cursor.close()
             connection.close()
@@ -375,42 +358,22 @@ def update_card_status(card_id):
                 "message": "RFID card not found"
             }), 404
 
-
-        # Update status
-
-        cursor.execute(
-            """
-            UPDATE rfid_cards
-            SET card_status = %s
-            WHERE card_id = %s
-            """,
-            (new_status, card_id)
-        )
-
-
         connection.commit()
 
         cursor.close()
         connection.close()
 
-
         return jsonify({
-
             "success": True,
-
-            "message":
-                f"Card status successfully changed to {new_status}",
-
+            "message": f"Card status changed to {new_status}",
             "card_id": card_id,
-
             "card_status": new_status
-
         })
-
 
     except Exception as e:
 
         if connection:
+            connection.rollback()
             connection.close()
 
         return jsonify({
@@ -420,11 +383,11 @@ def update_card_status(card_id):
 
 
 # =========================================================
-# ADMIN — DASHBOARD STATISTICS
+# ADMIN STATISTICS
 # =========================================================
 
-@app.route("/api/admin/statistics", methods=["GET"])
-def admin_statistics():
+@app.route("/api/admin/stats", methods=["GET"])
+def admin_stats():
 
     connection = get_db_connection()
 
@@ -435,84 +398,56 @@ def admin_statistics():
             "message": "Database connection failed"
         }), 500
 
-
     try:
 
         cursor = connection.cursor(dictionary=True)
 
-
         # Total students
-
         cursor.execute(
-            """
-            SELECT COUNT(*) AS total_students
-            FROM students
-            """
+            "SELECT COUNT(*) AS total FROM students"
         )
 
-        total_students = cursor.fetchone()["total_students"]
-
+        total_students = cursor.fetchone()["total"]
 
         # Total RFID cards
-
         cursor.execute(
-            """
-            SELECT COUNT(*) AS total_cards
-            FROM rfid_cards
-            """
+            "SELECT COUNT(*) AS total FROM rfid_cards"
         )
 
-        total_cards = cursor.fetchone()["total_cards"]
-
+        total_cards = cursor.fetchone()["total"]
 
         # Active cards
-
-        cursor.execute(
-            """
-            SELECT COUNT(*) AS active_cards
+        cursor.execute("""
+            SELECT COUNT(*) AS total
             FROM rfid_cards
             WHERE card_status = 'ACTIVE'
-            """
-        )
+        """)
 
-        active_cards = cursor.fetchone()["active_cards"]
-
+        active_cards = cursor.fetchone()["total"]
 
         # Inactive cards
-
-        cursor.execute(
-            """
-            SELECT COUNT(*) AS inactive_cards
+        cursor.execute("""
+            SELECT COUNT(*) AS total
             FROM rfid_cards
             WHERE card_status = 'INACTIVE'
-            """
-        )
+        """)
 
-        inactive_cards = cursor.fetchone()["inactive_cards"]
-
+        inactive_cards = cursor.fetchone()["total"]
 
         cursor.close()
         connection.close()
-
 
         return jsonify({
 
             "success": True,
 
-            "statistics": {
-
+            "stats": {
                 "total_students": total_students,
-
                 "total_cards": total_cards,
-
                 "active_cards": active_cards,
-
                 "inactive_cards": inactive_cards
-
             }
-
         })
-
 
     except Exception as e:
 
